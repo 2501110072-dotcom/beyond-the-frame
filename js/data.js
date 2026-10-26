@@ -1,12 +1,10 @@
 /* 내용 데이터: 이미지·3D 파일 경로, 학생 목록(이름·소개·포트폴리오), 화면 위 좌표 */
 const ASSETS = {
-  gallery: 'assets/images/gallery-bg.jpg',
-  pedestals: 'assets/images/pedestals.webp',
   street: 'assets/images/street.jpg',
   arch: 'assets/images/arch-bg.jpg',
   frames: 'assets/images/frames.webp',
-  ticket: 'assets/images/ticket.png',
-  torn: 'assets/images/ticket-torn.png',
+  ticket: 'assets/images/ticket.webp',
+  torn: 'assets/images/ticket-torn.webp',
   poster: 'assets/images/poster.webp',
 
   m01: 'assets/models/01.glb', m02: 'assets/models/02.glb', m03: 'assets/models/03.glb',
@@ -15,6 +13,33 @@ const ASSETS = {
   m10: 'assets/models/10.glb', m11: 'assets/models/11.glb', m12: 'assets/models/12.glb',
   m13: 'assets/models/13.glb', m14: 'assets/models/14.glb', m15: 'assets/models/15.glb',
 };
+
+/* 전시실 GALLERY 01~03: 전시실마다 배경(bg), 좌대 이미지(statues, 5개), 좌대 위 석고상 자리(slots, 왼쪽부터 5칸).
+   slots: x·y = 석고상 발이 놓이는 좌대 윗면, h = 석고상 키, tag = 이름표 높이. 좌대 이미지를 바꾸면 slots도 같이 바꿔야 함.
+   top = 좌대 이미지를 세로로 내리는 위치 (1전시실 좌대 이미지는 세로가 짧아서 바닥에 맞춤) */
+const ROOM_ASSETS = [
+  {
+    bg: 'assets/images/gallery-1/bg.jpg', statues: 'assets/images/gallery-1/statues.webp', top: 533,
+    slots: [
+      { x: 252, y: 821, h: 320, tag: 911 }, { x: 764, y: 720, h: 150, tag: 810 }, { x: 1100, y: 642, h: 150, tag: 732 },
+      { x: 1455, y: 542, h: 150, tag: 632 }, { x: 1847, y: 823, h: 234, tag: 913 },
+    ],
+  },
+  {
+    bg: 'assets/images/gallery-2/bg.jpg', statues: 'assets/images/gallery-2/statues.webp', top: 0,
+    slots: [
+      { x: 289, y: 533, h: 320, tag: 623 }, { x: 717, y: 540, h: 150, tag: 630 }, { x: 1037, y: 641, h: 150, tag: 731 },
+      { x: 1493, y: 518, h: 150, tag: 608 }, { x: 1798, y: 681, h: 320, tag: 771 },
+    ],
+  },
+  {
+    bg: 'assets/images/gallery-3/bg.jpg', statues: 'assets/images/gallery-3/statues.webp', top: 0,
+    slots: [
+      { x: 157, y: 675, h: 168, tag: 765 }, { x: 745, y: 767, h: 150, tag: 857 }, { x: 952, y: 728, h: 150, tag: 818 },
+      { x: 1310, y: 723, h: 150, tag: 813 }, { x: 1568, y: 769, h: 236, tag: 859 },
+    ],
+  },
+];
 
 const STUDENTS = [
   { name: '김예일', slogan: '구조와 흐름을 꿰뚫어 불편을 편리로 바꾸는 경험 디자이너', desc: '', portfolio: '' },
@@ -39,14 +64,6 @@ const MODELS = {
   '박호성': ASSETS.m06, '김예일': ASSETS.m07, '오수한': ASSETS.m08, '박수빈': ASSETS.m09, '김우선': ASSETS.m10,
   '조예빈': ASSETS.m11, '송예준': ASSETS.m12, '김준서': ASSETS.m13, '손예진': ASSETS.m14, '하태랑': ASSETS.m15,
 };
-
-const SLOTS = [
-  { x: 282, y: 552, h: 320, tag: 650 },
-  { x: 718, y: 546, h: 245, tag: 630 },
-  { x: 1037, y: 644, h: 150, tag: 688 },
-  { x: 1486, y: 526, h: 230, tag: 612 },
-  { x: 1745, y: 690, h: 310, tag: 800 },
-];
 
 const FRAMES = [
   { inner: [377, 399, 346, 252], outer: [344, 368, 412, 315] },

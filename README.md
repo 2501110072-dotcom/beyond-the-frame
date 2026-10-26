@@ -46,11 +46,11 @@ beyond-the-frame/
 │   │   ├── ticket-torn.png   뜯긴 티켓
 │   │   ├── arch-bg.jpg       로비 배경
 │   │   ├── frames.webp       로비 액자
-│   │   ├── gallery-bg.jpg    전시실 배경
-│   │   └── pedestals.webp    전시실 좌대
-│   └── models/           # 학생별 석고상 3D 파일
-│       ├── 01.glb ~ 15.glb         웹(https)에서 쓰는 3D 파일
-│       └── 01.glb.js ~ 15.glb.js   더블클릭(file://)으로 열 때 쓰는 같은 내용의 사본 (zip에만 있음, GitHub에는 안 올림)
+│   │   ├── gallery-1/        전시실 1: bg.jpg(배경) + statues.webp(좌대 5개)
+│   │   ├── gallery-2/        전시실 2: bg.jpg(배경) + statues.webp(좌대 5개)
+│   │   └── gallery-3/        전시실 3: bg.jpg(배경) + statues.webp(좌대 5개)
+│   └── models/           # 학생별 석고상 3D 파일 (용량을 줄인 버전)
+│       └── 01.model.js ~ 15.model.js   3D 파일(.glb)을 글자(base64)로 담은 파일. 더블클릭(file://)과 GitHub Pages 모두 이 파일을 읽음
 ├── .nojekyll             # GitHub Pages가 파일을 그대로 쓰도록 하는 빈 파일
 └── README.md
 ```
@@ -90,14 +90,8 @@ JavaScript 파일들은 모듈(`import`)이 아니라 `index.html`에서 차례�
 
 ## 내 컴퓨터에서 실행하기
 
-zip으로 받은 폴더라면 `index.html`을 **더블클릭해서 열어도** 3D 석고상까지 나옵니다 (three.js와 글꼴을 인터넷에서 불러오므로 인터넷 연결은 필요).
-브라우저는 보안 때문에 `file://` 주소에서 `.glb` 파일을 읽지 못하게 막지만, 스크립트 파일은 읽을 수 있어서 `assets/models/*.glb.js` 사본을 대신 씁니다.
-
-GitHub에서 받은 폴더에는 `.glb.js` 사본이 없어서 더블클릭으로는 3D가 안 나옵니다. 그럴 때는 아래 방법 중 하나로 로컬 서버를 켜서 열어 주세요.
-
-- **VS Code**: Live Server 확장 설치 → `index.html` 우클릭 → *Open with Live Server*
-- **Python**: 이 폴더에서 `python -m http.server 8000` → 브라우저에서 http://localhost:8000
-- **Node.js**: 이 폴더에서 `npx serve` → 안내된 주소로 접속
+폴더 압축을 풀고 `index.html`을 **더블클릭해서 열면** 3D 석고상까지 나옵니다 (three.js와 글꼴을 인터넷에서 불러오므로 인터넷 연결은 필요).
+3D 파일은 `assets/models/*.model.js` 하나만 쓰기 때문에 GitHub Pages에서도 같은 방식으로 동작하고, 별도의 로컬 서버가 필요 없습니다.
 
 ## GitHub Pages 배포
 

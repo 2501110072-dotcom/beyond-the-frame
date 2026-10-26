@@ -7,16 +7,17 @@ $('#gallery-spots').innerHTML = spotsHTML(GALLERY_SPOTS, 1.7);
 function setRoom(r, instant) {
   room = clamp(r, 0, 2);
   gallery.el.dataset.room = room;
+  const art = ROOM_ASSETS[room], slots = art.slots;
+  $('#room-bg').src = art.bg; $('#room-statues').src = art.statues; $('#room-statues').style.top = art.top + 'px';
   $('#g-title').textContent = `GALLERY ${pad(room + 1)}`;
-  $('#g-sub').textContent = `STUDENT ${pad(room * 5 + 1)} — ${pad(room * 5 + 5)}`;
   $('#room-prev').disabled = room === 0; $('#room-next').disabled = room === 2;
   const list = STUDENTS.filter((s) => s.room === room);
   $('#shadows').innerHTML = list.map((s) => {
-    const p = SLOTS[s.slot];
+    const p = slots[s.slot];
     return MODELS[s.name] ? `<span class="cshadow" style="left:${p.x}px;top:${p.y}px;width:${p.h * .62}px;height:${p.h * .09}px"></span>` : '';
   }).join('');
   hots.innerHTML = list.map((s) => {
-    const p = SLOTS[s.slot], has = !!MODELS[s.name], w = Math.max(p.h * .5, 110);
+    const p = slots[s.slot], has = !!MODELS[s.name], w = Math.max(p.h * .5, 110);
 
     const stand = has ? `<span class="stand" style="height:${p.h}px">${bustSVG(s.no % 2 ? -1 : 1)}</span>` : '';
     return `<button class="hot${has ? ' has' : ' empty'}" type="button" data-i="${s.no - 1}" style="left:${p.x - w / 2}px;top:${p.y - p.h}px;width:${w}px;height:${p.tag - p.y + p.h + 40}px" aria-label="${s.name} 학생 보기">
@@ -51,7 +52,7 @@ function setRoom(r, instant) {
   });
 
   const withModel = list.filter((s) => MODELS[s.name]);
-  const mid = withModel.length ? withModel.reduce((a, s) => a + SLOTS[s.slot].x, 0) / withModel.length : gallery.iw / 2;
+  const mid = withModel.length ? withModel.reduce((a, s) => a + slots[s.slot].x, 0) / withModel.length : gallery.iw / 2;
   Object.assign(gallery, { tz: 1, z: 1, tcx: mid, tcy: gallery.ih / 2 });
   limit(gallery); gallery.cx = gallery.tcx; gallery.cy = gallery.tcy;
   placeStatues();
@@ -98,7 +99,7 @@ async function placeStatues() {
       const obj = tpl.clone(true);
       G3.scene.add(obj);
 
-      G3.statues.push({ obj, i: s.no - 1, slot: SLOTS[s.slot], angle: 0, v: 0, spin: spinFor(s.no), hold: FRONT_HOLD + s.no * 420, drag: false });
+      G3.statues.push({ obj, i: s.no - 1, slot: ROOM_ASSETS[my].slots[s.slot], angle: 0, v: 0, spin: spinFor(s.no), hold: FRONT_HOLD + s.no * 420, drag: false });
       const hot = $(`.hot[data-i="${s.no - 1}"]`, hots); if (hot) hot.classList.add('ready');
     }).catch((e) => report3D(e, 'model'));
   }

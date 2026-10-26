@@ -25,7 +25,7 @@ const GLB_DATA = {};
 function glbFromScript(url) {
   return new Promise((res, rej) => {
     const s = document.createElement('script');
-    s.src = url + '.js';
+    s.src = url.replace(/\.glb$/, '.model.js');
     s.onload = () => (GLB_DATA[url] ? res(GLB_DATA[url]) : rej(new Error('GLB_DATA에 없음: ' + url)));
     s.onerror = () => rej(new Error('파일이 없음: ' + s.src));
     document.head.appendChild(s);
@@ -34,7 +34,7 @@ function glbFromScript(url) {
 
 function loadModel(url) {
   if (!modelCache.has(url)) modelCache.set(url, three().then(async ({ THREE, GLTFLoader, MeshoptDecoder }) => {
-    const src = location.protocol === 'file:' && !url.startsWith('data:') ? await glbFromScript(url) : url;
+    const src = !url.startsWith('data:') ? await glbFromScript(url) : url;
     const gltf = await parseGLB(src, GLTFLoader, MeshoptDecoder);
     const m = gltf.scene;
 
@@ -78,7 +78,7 @@ function report3D(e, step) {
   console.error('3D 석고상을 불러오지 못했습니다 (' + step + ')', e);
   const raw = Object.values(MODELS).some((u) => !String(u).startsWith('data:'));
   const msg = location.protocol === 'file:' && raw
-    ? '더블클릭으로 연 화면에서 3D 석고상 파일(assets/models/*.glb.js)을 찾지 못했어요. README의 “내 컴퓨터에서 실행하기”를 봐 주세요.'
+    ? '더블클릭으로 연 화면에서 3D 석고상 파일(assets/models/*.model.js)을 찾지 못했어요. README의 “내 컴퓨터에서 실행하기”를 봐 주세요.'
     : step === 'three'
       ? '3D 라이브러리를 불러오지 못했어요. 인터넷 연결을 확인하고 새로고침해 주세요.'
       : '석고상 3D 파일을 읽지 못했어요. 파일이 깨졌거나 경로가 틀렸을 수 있어요.';

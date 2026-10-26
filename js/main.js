@@ -46,7 +46,7 @@ function tick(t) {
 }
 
 // css/lobby.css 안에서 쓰는 이미지라서 페이지 기준 전체 주소로 바꿔 둠 (그대로 두면 css 폴더 기준으로 찾음)
-document.documentElement.style.setProperty('--img-gallery', `url("${new URL(ASSETS.gallery, location.href)}")`);
+document.documentElement.style.setProperty('--img-gallery', `url("${new URL(ROOM_ASSETS[0].bg, location.href)}")`);
 $$('[data-asset]').forEach((img) => { img.src = ASSETS[img.dataset.asset]; });
 // 주소 끝(#lobby, #gallery-2 …)은 setRoom이 주소를 고치기 전에 먼저 읽어 둠
 const start = location.hash.slice(1);

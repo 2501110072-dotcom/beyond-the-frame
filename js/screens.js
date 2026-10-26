@@ -10,7 +10,7 @@ function go(name) {
   for (const el of [$('#intro'), introFrame]) if (el !== screens.intro) el.classList.remove('on');
   page = name;
   topbar.classList.toggle('on', name !== 'intro');
-  topbar.classList.toggle('no-brand', name === 'lobby');
+  topbar.classList.toggle('no-brand', name === 'lobby' || name === 'gallery');
   topbar.dataset.theme = name === 'list' ? 'light' : '';
   if (name !== 'gallery') closeDetail(true);
   if (name === 'list') renderList();
