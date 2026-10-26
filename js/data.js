@@ -49,14 +49,14 @@ const STUDENTS = [
   { name: '김수연', slogan: '상대의 이야기에 귀 기울이고, 원하는 방향을 함께 찾아가는 디자이너', desc: '', portfolio: '' },
   { name: '박재연', slogan: '재미있게 끝까지 질리지 않는 디자이너', desc: '', portfolio: 'https://2501110072-dotcom.github.io/l01_interaction_2b/2501110072_ing_1' },
   { name: '박수빈', slogan: '떠오른 가능성을, 손에 닿는 경험으로.', desc: '', portfolio: '' },
-  { name: '박호성', slogan: '감에 의존하지 않고, 데이터를 바탕으로 개선하는 디자이너', desc: '', portfolio: '' },
+  { name: '박호성', slogan: '감에 의존하지 않고, 데이터를 바탕으로 개선하는 디자이너', desc: '', portfolio: 'https://hoseong-graduation-portfolio.qkrghtjd4820.chatgpt.site/' },
   { name: '오수한', slogan: '익숙함의 결을 따라, 변화를 섬세하게 빚는 디자이너', desc: '', portfolio: 'https://suhan998.github.io/Web-Portfolio/' },
   { name: '조민영', slogan: '경험을 내일로 잇는 디자이너', desc: '', portfolio: 'https://ddmom.github.io/my_portfolio/' },
   { name: '조예빈', slogan: '익숙한 것에서 낯선 매력을 발견하는 디자이너', desc: '', portfolio: 'https://yobinnie.github.io/exhibition_2026/' },
   { name: '손예진', slogan: '익숙한 것을 낯설게 듣고, 음악처럼 오래 남는 경험을 만드는 디자이너', desc: '', portfolio: 'https://pueon01-max.github.io/play-2/' },
   { name: '송예준', slogan: '과거와 현재와 미래를 잇는 디자이너', desc: '', portfolio: '' },
   { name: '천승현', slogan: '흐름에 맞춰 유연하게 변화하는 디자이너', desc: '', portfolio: 'https://cheon0903.github.io/fluidity-portfolio/' },
-  { name: '하태랑', slogan: '현실과 꿈의 모호한 경계를 시각화하는 디자이너', desc: '', portfolio: 'https://www.figma.com/design/bTVBkOEK5V0OMDmdqKnAsn/Untitled?node-id=0-1' },
+  { name: '하태랑', slogan: '현실과 꿈의 모호한 경계를 시각화하는 디자이너', desc: '', portfolio: 'https://lalalatototo10-alt.github.io/graduation/' },
 ].map((s, i) => ({ ...s, no: i + 1, room: Math.floor(i / 5), slot: i % 5 }));
 
 const MODELS = {
