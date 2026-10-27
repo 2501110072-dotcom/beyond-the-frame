@@ -46,7 +46,7 @@ const STUDENTS = [
   { name: '민하도', slogan: '아이디어를 시각화하는 디자이너', desc: '', portfolio: 'https://hadomin91-design.github.io/hadomin_design/' },
   { name: '김준서', slogan: '상상한 것을 실현으로 바꾸는 디자이너', desc: '', portfolio: 'https://superijun.github.io/portfolio/' },
   { name: '김우선', slogan: '경험을 디자인하고, 감각을 시각화하는 디자이너', desc: '', portfolio: 'https://kok62360.github.io/1004/' },
-  { name: '김수연', slogan: '상대의 이야기에 귀 기울이고, 원하는 방향을 함께 찾아가는 디자이너', desc: '', portfolio: '' },
+  { name: '김수연', slogan: '상대의 이야기에 귀 기울이고, 원하는 방향을 함께 찾아가는 디자이너', desc: '', portfolio: 'https://kimssuyeon.github.io/battery-portfolio/' },
   { name: '박재연', slogan: '재미있게 끝까지 질리지 않는 디자이너', desc: '', portfolio: 'https://2501110072-dotcom.github.io/l01_interaction_2b/2501110072_ing_1' },
   { name: '박수빈', slogan: '떠오른 가능성을, 손에 닿는 경험으로.', desc: '', portfolio: '' },
   { name: '박호성', slogan: '감에 의존하지 않고, 데이터를 바탕으로 개선하는 디자이너', desc: '', portfolio: 'https://hoseong-graduation-portfolio.qkrghtjd4820.chatgpt.site/' },
